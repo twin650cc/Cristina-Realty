@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBN-AakT2mUp8UbCNW6K7Vfv6u6jIGQRys",
+    authDomain: "sampleproject-e30c5.firebaseapp.com",
+    databaseURL: "https://sampleproject-e30c5.firebaseio.com",
+    projectId: "sampleproject-e30c5",
+    storageBucket: "",
+    messagingSenderId: "573651725792",
+    appId: "1:573651725792:web:d71d227d62d40636"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var database = firebase.database();
+
+database.ref().set({
+    message:"Hello World!",
+
+})
+
+
+database.ref("/lastname").set("Lastname Changed")
+
+database.ref("/lastname").on("value",function(snapshot)
+{
+    console.log(snapshot.val())
+})
+
+</script>
+
+<input id="lastnameInput" style="width:100%;">
+<script>
+$("#lastnameInput").on("keyup",function(){
+database.ref("/lastname").set($(this).val());
+})
+</script>
+
+</body>
+
+
+</html>
